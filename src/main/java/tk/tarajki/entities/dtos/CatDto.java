@@ -1,12 +1,13 @@
 package tk.tarajki.entities.dtos;
 
 import tk.tarajki.entities.models.Cat;
-import tk.tarajki.entities.models.Dog;
+
+import java.time.Instant;
 
 public class CatDto {
     private Long id;
 
-    private Long createdAt;
+    private Instant createdAt;
 
     private String name;
 
@@ -14,7 +15,7 @@ public class CatDto {
 
     public CatDto(Cat cat) {
         this.id = cat.getId();
-        this.createdAt = cat.getCreatedAt().toEpochMilli();
+        this.createdAt = cat.getCreatedAt();
         this.name = cat.getName();
         this.age = cat.getAge();
     }
@@ -27,11 +28,11 @@ public class CatDto {
         this.id = id;
     }
 
-    public Long getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Long createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 

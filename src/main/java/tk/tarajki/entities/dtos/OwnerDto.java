@@ -2,13 +2,14 @@ package tk.tarajki.entities.dtos;
 
 import tk.tarajki.entities.models.Owner;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OwnerDto {
     private Long id;
 
-    private Long createdAt;
+    private Instant createdAt;
 
     private List<CatDto> cats;
 
@@ -18,7 +19,7 @@ public class OwnerDto {
 
     public OwnerDto(Owner owner) {
         this.id = owner.getId();
-        this.createdAt = owner.getCreatedAt().toEpochMilli();
+        this.createdAt = owner.getCreatedAt();
         this.cats = owner.getAllCats().stream().map(CatDto::new).collect(Collectors.toList());
         this.allDogs = owner.getAllDogs().stream().map(DogDto::new).collect(Collectors.toList());
         this.currentDogs =  owner.getCurrentDogs().stream().map(DogDto::new).collect(Collectors.toList());
@@ -32,11 +33,11 @@ public class OwnerDto {
         this.id = id;
     }
 
-    public Long getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Long createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 

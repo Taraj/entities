@@ -2,10 +2,12 @@ package tk.tarajki.entities.dtos;
 
 import tk.tarajki.entities.models.Dog;
 
+import java.time.Instant;
+
 public class DogDto {
     private Long id;
 
-    private Long createdAt;
+    private Instant createdAt;
 
     private String name;
 
@@ -13,7 +15,7 @@ public class DogDto {
 
     public DogDto(Dog dog) {
         this.id = dog.getId();
-        this.createdAt = dog.getCreatedAt().toEpochMilli();
+        this.createdAt = dog.getCreatedAt();
         this.name = dog.getName();
         this.age = dog.getAge();
     }
@@ -26,11 +28,11 @@ public class DogDto {
         this.id = id;
     }
 
-    public Long getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Long createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
