@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import tk.tarajki.entities.config.AppSettings;
 import tk.tarajki.entities.dtos.DogDto;
 import tk.tarajki.entities.dtos.OwnerDto;
 import tk.tarajki.entities.dtos.TimeDto;
@@ -29,18 +30,22 @@ public class ExampleController {
 
 
     @GetMapping("/owners")
-    public List<OwnerDto> getAllOwners(){
+    public List<OwnerDto> getAllOwners() {
         return ownerRepository.findAll().stream().map(OwnerDto::new).collect(Collectors.toList());
     }
 
     @GetMapping("/dogs")
-    public List<DogDto> getAllDogs(){
+    public List<DogDto> getAllDogs() {
         return dogsRepository.findAllNotDeleted().stream().map(DogDto::new).collect(Collectors.toList());
     }
 
     @PostMapping("/time")
-    public void postTime(@RequestBody TimeDto dto){
-       System.out.println(dto.getInstant());
+    public void postTime(@RequestBody TimeDto dto) {
+        System.out.println(dto.getInstant());
     }
 
+    @GetMapping("/test")
+    public String getTest() {
+        return AppSettings.getTest();
+    }
 }

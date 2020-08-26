@@ -9,3 +9,5 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/entities?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: abc
+abc:
+  test: asdasd
