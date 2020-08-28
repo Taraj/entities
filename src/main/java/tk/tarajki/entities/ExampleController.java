@@ -46,6 +46,9 @@ public class ExampleController {
 
     @GetMapping("/test")
     public String getTest() {
+        System.out.println(dogsRepository.findByIdRequired(1L));
+
+
         return AppSettings.getTest();
     }
 }
