@@ -1,5 +1,6 @@
 package tk.tarajki.entities.swagger.plugins;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.stereotype.Component;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.schema.ModelPropertyBuilderPlugin;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 import static springfox.bean.validators.plugins.Validators.extractAnnotation;
 
 @Component
-public class ListAnnotationPlugin implements ModelPropertyBuilderPlugin {
+public class CollectionAnnotationPlugin implements ModelPropertyBuilderPlugin {
     @Override
     public boolean supports(DocumentationType delimiter) {
         return true;

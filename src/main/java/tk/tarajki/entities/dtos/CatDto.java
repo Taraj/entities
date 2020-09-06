@@ -3,10 +3,12 @@ package tk.tarajki.entities.dtos;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.UniqueElements;
 import tk.tarajki.entities.models.Cat;
 
 
 import org.hibernate.validator.constraints.Length;
+import tk.tarajki.entities.validators.Password;
 
 import javax.validation.constraints.*;
 import java.time.Instant;
@@ -30,12 +32,18 @@ public class CatDto {
 
 
     @ApiModelProperty
-    //@NotEmpty
+    @NotEmpty
    // @Length(max = 2)
     private String name;
 
     @ApiModelProperty()
+    @Positive
     private Integer age;
+
+    @Password
+    @NotEmpty
+    @ApiModelProperty(required = true)
+    private String password;
 
     public CatDto(Cat cat) {
         this.id = cat.getId();
@@ -67,5 +75,9 @@ public class CatDto {
 
     public Integer getAge() {
         return age;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

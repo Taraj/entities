@@ -6,7 +6,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.schema.ModelPropertyBuilderPlugin;
 import springfox.documentation.spi.schema.contexts.ModelPropertyContext;
 
-import static springfox.bean.validators.plugins.Validators.annotationFromBean;
 import static springfox.bean.validators.plugins.Validators.extractAnnotation;
 
 @Component

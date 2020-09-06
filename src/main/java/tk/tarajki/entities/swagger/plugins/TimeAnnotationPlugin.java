@@ -10,7 +10,6 @@ import javax.validation.constraints.*;
 
 import java.util.List;
 
-import static springfox.bean.validators.plugins.Validators.annotationFromBean;
 import static springfox.bean.validators.plugins.Validators.extractAnnotation;
 
 @Component
@@ -23,16 +22,16 @@ public class TimeAnnotationPlugin implements ModelPropertyBuilderPlugin {
     @Override
     public void apply(ModelPropertyContext context) {
         extractAnnotation(context, Future.class).ifPresent(annotation ->
-                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate", "Future")))
+                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate", "future")))
         );
         extractAnnotation(context, Past.class).ifPresent(annotation ->
-                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate","Past")))
+                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate","past")))
         );
         extractAnnotation(context, FutureOrPresent.class).ifPresent(annotation ->
-                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate","FutureOrPresent")))
+                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate","futureOrPresent")))
         );
         extractAnnotation(context, PastOrPresent.class).ifPresent(annotation ->
-                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate","PastOrPresent")))
+                context.getSpecificationBuilder().vendorExtensions(List.of(new StringVendorExtension("allowedDate","pastOrPresent")))
         );
     }
 }
