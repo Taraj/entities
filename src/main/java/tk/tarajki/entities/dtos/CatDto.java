@@ -1,16 +1,40 @@
 package tk.tarajki.entities.dtos;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Range;
 import tk.tarajki.entities.models.Cat;
 
-import java.time.Instant;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.*;
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
+
+import static io.swagger.annotations.ApiModelProperty.AccessMode;
+
+@ApiModel("CatDto")
 public class CatDto {
+    @ApiModelProperty(accessMode = AccessMode.READ_ONLY)
     private Long id;
 
+    @ApiModelProperty
+@FutureOrPresent
     private Instant createdAt;
 
+    @ApiModelProperty
+    @Size(max = 12)
+    private List<@Length(max = 3) String> createdAtt;
+
+
+    @ApiModelProperty
+    //@NotEmpty
+   // @Length(max = 2)
     private String name;
 
+    @ApiModelProperty()
     private Integer age;
 
     public CatDto(Cat cat) {
@@ -20,35 +44,28 @@ public class CatDto {
         this.age = cat.getAge();
     }
 
-    public Long getId() {
-        return id;
+
+    public CatDto() {
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
+    public List<String> getCreatedAtt() {
+        return createdAtt;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getAge() {
         return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 }

@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import tk.tarajki.entities.config.AppSettings;
+import tk.tarajki.entities.dtos.CatDto;
 import tk.tarajki.entities.dtos.DogDto;
 import tk.tarajki.entities.dtos.OwnerDto;
 import tk.tarajki.entities.dtos.TimeDto;
 import tk.tarajki.entities.repositories.DogRepository;
 import tk.tarajki.entities.repositories.OwnerRepository;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +44,11 @@ public class ExampleController {
     @PostMapping("/time")
     public void postTime(@RequestBody TimeDto dto) {
         System.out.println(dto.getInstant());
+    }
+
+    @PostMapping("/cat")
+    public void postCat(@Valid  @RequestBody CatDto dto) {
+        System.out.println(dto);
     }
 
     @GetMapping("/test")
